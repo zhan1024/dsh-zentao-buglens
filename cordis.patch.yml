@@ -1,0 +1,5 @@
+- insert:
+    - id: dsh-zentao-buglens
+      name: dsh-zentao-buglens
+      config:
+        configPath: !!js process.env.BUGLENS_CONFIG

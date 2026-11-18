@@ -1,0 +1,6 @@
+interface:
+  display_name: "禅图 BugLens · 截图提单"
+  short_description: "为测试同事分析截图、补全故障材料、推荐最近指派的开发同事并提交禅道"
+  default_prompt: "使用 $zentao-buglens 帮我根据页面截图和简单描述整理材料，选择负责人并提交禅道 Bug。"
+policy:
+  allow_implicit_invocation: true

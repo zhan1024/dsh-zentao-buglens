@@ -1,0 +1,14 @@
+{
+  "dataDir": "~/.local/share/zentao-buglens",
+  "port": 43921,
+  "ai": {
+    "baseUrl": "https://your-team-ai-gateway.example/v1",
+    "model": "your-vision-model",
+    "apiKeyEnv": "BUGLENS_AI_KEY"
+  },
+  "zentao": { "profile": "", "siteUrl": "", "account": "", "tokenEnv": "ZENTAO_TOKEN" },
+  "defaults": { "product": 0, "project": 0, "openedBuild": ["trunk"] },
+  "team": [],
+  "historyDays": 30,
+  "historyScanLimit": 200
+}

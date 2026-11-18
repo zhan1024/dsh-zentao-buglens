@@ -1,0 +1,10 @@
+node_modules/
+dist/
+artifacts/
+.buglens/
+.env
+config.local.json
+*.tgz
+test-results/
+playwright-report/
+.DS_Store

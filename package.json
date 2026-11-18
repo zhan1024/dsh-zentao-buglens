@@ -1,0 +1,32 @@
+{
+  "name": "dsh-zentao-buglens",
+  "version": "0.1.0",
+  "description": "禅图 BugLens：截图圈选、AI 引导补全、前后端分工与最近指派推荐，一键生成材料并提交禅道。Screenshot-to-ZenTao bug reporting for QA teams.",
+  "type": "module",
+  "license": "MIT",
+  "author": "zhan1024",
+  "homepage": "https://github.com/zhan1024/dsh-zentao-buglens",
+  "repository": { "type": "git", "url": "git+https://github.com/zhan1024/dsh-zentao-buglens.git" },
+  "bugs": { "url": "https://github.com/zhan1024/dsh-zentao-buglens/issues" },
+  "keywords": ["dsh", "dsh-plugin", "deepseek-harness", "zentao", "bug-report", "screenshot", "qa", "agent-skill", "禅道", "截图提单", "禅图"],
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" } },
+  "bin": { "dsh-zentao-buglens": "./dist/cli.js" },
+  "files": ["dist", "ui", "extension", "skills", "docs", "cordis.patch.yml", "config.example.json", "README.md", "README.zh-CN.md", "LICENSE"],
+  "engines": { "node": ">=22.15" },
+  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" },
+  "dsh": { "bundle": { "patch": "./cordis.patch.yml" } },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "test:e2e": "npm run build && node --test test/browser.e2e.mjs",
+    "test:dsh": "npm run build && node test/dsh.e2e.mjs",
+    "package:assets": "npm run build && node scripts/package.mjs",
+    "start": "node dist/cli.js",
+    "prepack": "npm run build"
+  },
+  "dependencies": { "sharp": "0.35.5", "zentao-api": "0.7.0" },
+  "devDependencies": { "@types/node": "26.6.6", "typescript": "7.0.2", "@playwright/test": "1.65.1" }
+}

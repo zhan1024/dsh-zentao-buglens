@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "禅图 BugLens · 截图提单",
+  "version": "0.1.0",
+  "description": "截图圈选、结合当前页面生成规范故障材料，经选择后指派并提交到禅道。配合禅图 BugLens 本机服务使用。",
+  "minimum_chrome_version": "118",
+  "permissions": ["activeTab", "scripting", "storage", "debugger"],
+  "host_permissions": ["http://127.0.0.1/*"],
+  "action": { "default_popup": "popup.html", "default_title": "禅图 BugLens" },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "icons": { "16": "icon16.png", "48": "icon48.png", "128": "icon128.png" }
+}
