@@ -40,11 +40,13 @@ git push -u origin main
 git tag -a v0.1.0 -m '禅图 BugLens v0.1.0'
 git push origin v0.1.0
 npm run package:assets
-npm publish artifacts/dsh-zentao-buglens-0.1.0.tgz --access public
+npm publish ./artifacts/dsh-zentao-buglens-0.1.0.tgz --access public
 gh release create v0.1.0 artifacts/*.tgz artifacts/*.zip artifacts/SHA256SUMS --verify-tag --title '禅图 BugLens v0.1.0' --notes-file docs/RELEASE-NOTES.md
 ```
 
 如果登录过期，执行 `npm login --auth-type=web`，由账号本人在 npm 官方页面完成授权和安全验证。不得把 Key、密码或验证码写进项目或聊天。发布后匿名下载比对校验值，在空目录使用固定版本 CLI，并从公开 npm 包重新跑 DSH 安装测试。
+
+tarball 本机相对路径需要以 `./` 开头，避免 npm 将 `artifacts/文件名` 误解为 GitHub 简写。发布成功后若元数据已更新而普通 tarball 地址仍返回 404，检查 CDN 缓存头并等待过期，再复验标准安装；不要覆盖版本或反复发布。本次发布遇到的早期 404 缓存 TTL 为 300 秒。
 
 Skill ZIP 可独立下载，也可通过固定 npm 包的 `install-skill` 命令安装到宿主 skills 目录；安装 Skill 不要求用户先安装 DSH。支持 GitHub 技能发现的平台可以索引本仓库 `skills/zentao-buglens/SKILL.md`，索引状态需另外核实。
 
@@ -54,9 +56,22 @@ Skills CLI 的 GitHub 安装命令为 `npx skills add zhan1024/dsh-zentao-buglen
 
 DSHMarket 的公开目录使用 `awesome-dsh-plugin/awesome-dsh-plugin` 投稿格式：新增唯一 YAML 条目，包含仓库、明确名称、类别、双语介绍、固定版本 Release tarball 及图标。先跑目录的 schema 校验，再提交 PR。仓库年龄、人工审核和镜像更新可能导致等待；PR 创建不等于公开收录。
 
+参照上一个 Frontend Replay 插件的流程：上游目录 PR → 审核合并 → 目录构建 → DSHMarket 镜像及 format 1 安装索引同步 → 公开搜索与安装复验。DSHMarket 首页标注数据来自 awesome-dsh-plugin、CI 每日刷新，并说明 `dshmarket.com/index.json` 与上游市场索引是同一份文档。核验时同时检查完整目录 `https://awesome-dsh-plugin.com/plugins.json` 和安装索引 `https://dshmarket.com/index.json`，不能只看首页精选或 PR 合并状态。本次两个数据文件均可访问，但暂未包含 `dsh-zentao-buglens`。
+
 dshplugin.io 使用其公开投稿渠道，DeepseekPlugin 使用其投稿页面。按各站实时规则提交，保持名称和固定版本一致。浏览器扩展 ZIP 不等于 Chrome Web Store/Edge Add-ons 正式上架；两个商店另需发布者账号和审核。
 
 公开状态与证据在 `PUBLISHED-VERIFICATION.md` 中记录，区分已发布、已投稿、待审核和已公开收录。
+
+本次实际入口：
+
+- npm：<https://www.npmjs.com/package/dsh-zentao-buglens>。
+- GitHub 三个安装包与校验和：<https://github.com/zhan1024/dsh-zentao-buglens/releases/tag/v0.1.0>。
+- 独立 Skill 目录：<https://skills.sh/zhan1024/dsh-zentao-buglens/zentao-buglens>。
+- DeepseekPlugin 已公开详情：<https://deepseekplugin.org/plugins/submitted?slug=zhan1024-2f-dsh-2d-zentao-2d-buglens>。
+- DSHMarket 目录投稿 PR：<https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/16476>。
+- dshplugin.io 投稿 Issue：<https://github.com/tjsdyy/dshplugin/issues/53>。
+
+两个投稿链接可查看审核、评论和合并状态，不能当作两个网站已公开收录的证明。DSHMarket 仓库年龄门槛不早于北京时间 2026-11-19 12:00:40 达到，之后仍以审核与目录同步结果为准。
 
 ## 用户下载
 
